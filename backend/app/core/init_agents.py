@@ -12,7 +12,7 @@ def initialize_agents():
     llm_client = OpenAIClient(api_key=api_key) if api_key else None
     
     # In a real system, these would be initialized with specific prompts from the DB
-    agent_registry.register(SupervisorAgent())
+    agent_registry.register(SupervisorAgent(llm_client=llm_client))
     
     AgentClass = LLMAgent if llm_client else MockAgent
 
