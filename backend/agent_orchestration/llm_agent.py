@@ -4,6 +4,9 @@ from app.services.llm.base import LLMClient
 from app.services.llm.context import context_manager
 
 class LLMAgent(BaseAgent):
+    def __init__(self, agent_type: AgentType, name: str, system_prompt: str, llm_client: LLMClient):
+        super().__init__(agent_type, name, system_prompt, llm_client)
+
     async def process(self, message: AgentMessage, history: List[AgentMessage]) -> AgentResponse:
         if not self.llm_client:
             return AgentResponse(content="Error: No LLM client configured.", confidence=0.0)

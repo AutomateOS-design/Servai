@@ -31,11 +31,11 @@ def initialize_agents():
     agent_registry.register(AgentClass(
         AgentType.OPS, "Operations Agent", OPS_PROMPT, llm_client
     ))
-    agent_registry.register(MockAgent(
-        AgentType.REPUTATION, "Reputation Agent", "You are the Reputation Lead. Focus on reviews."
+    agent_registry.register(AgentClass(
+        AgentType.REPUTATION, "Reputation Agent", "You are the Reputation Lead. Focus on reviews.", llm_client
     ))
-    agent_registry.register(MockAgent(
-        AgentType.FINANCE, "Finance Agent", "You are the Finance Lead. Focus on billing."
+    agent_registry.register(AgentClass(
+        AgentType.FINANCE, "Finance Agent", "You are the Finance Lead. Focus on billing.", llm_client
     ))
 
     print(f"Initialized {len(agent_registry.list_agents())} agents.")
