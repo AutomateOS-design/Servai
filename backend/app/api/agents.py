@@ -1,6 +1,6 @@
 from fastapi import APIRouter, HTTPException
-from ..agents.registry import agent_registry
-from ..agents.base import AgentMessage, MessageRole, AgentType
+from agent_orchestration.registry import agent_registry
+from agent_orchestration.base import AgentMessage, MessageRole, AgentType
 from pydantic import BaseModel
 from typing import List
 

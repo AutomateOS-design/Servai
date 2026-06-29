@@ -1,6 +1,6 @@
 from .base import BaseAgent, AgentMessage, AgentResponse, AgentType, MessageRole
 from .registry import agent_registry
-from ..core.message_bus import message_bus
+from app.core.message_bus import message_bus
 from typing import List, Dict, Any
 import logging
 

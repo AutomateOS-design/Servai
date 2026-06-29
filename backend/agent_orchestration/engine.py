@@ -1,6 +1,6 @@
 from typing import List, Dict, Any, Optional
-from ..agents.base import AgentMessage, AgentType, AgentResponse, MessageRole
-from ..agents.registry import agent_registry
+from .base import AgentMessage, AgentType, AgentResponse, MessageRole
+from .registry import agent_registry
 import uuid
 
 class WorkflowState(str):

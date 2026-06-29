@@ -1,6 +1,6 @@
 from fastapi import FastAPI, Depends, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from .api import agents, auth, customers, jobs, leads, interactions
+from .api import agents, auth, customers, jobs, leads, interactions, ws, webhooks
 from .core.init_agents import initialize_agents
 
 app = FastAPI(title="ServAI API", version="0.1.0")
@@ -26,6 +26,8 @@ app.include_router(customers.router, prefix="/api/v1/customers", tags=["customer
 app.include_router(jobs.router, prefix="/api/v1/jobs", tags=["jobs"])
 app.include_router(leads.router, prefix="/api/v1/leads", tags=["leads"])
 app.include_router(interactions.router, prefix="/api/v1/interactions", tags=["interactions"])
+app.include_router(ws.router, tags=["websocket"])
+app.include_router(webhooks.router, prefix="/api/v1/webhooks", tags=["webhooks"])
 
 @app.get("/")
 async def root():
