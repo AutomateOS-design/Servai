@@ -37,11 +37,14 @@ class AgentResponse(BaseModel):
     next_agent: Optional[AgentType] = None
     metadata: Dict[str, Any] = Field(default_factory=dict)
 
+from app.services.llm.base import LLMClient
+
 class BaseAgent(ABC):
-    def __init__(self, agent_type: AgentType, name: str, system_prompt: str):
+    def __init__(self, agent_type: AgentType, name: str, system_prompt: str, llm_client: Optional[LLMClient] = None):
         self.agent_type = agent_type
         self.name = name
         self.system_prompt = system_prompt
+        self.llm_client = llm_client
 
     @abstractmethod
     async def process(self, message: AgentMessage, history: List[AgentMessage]) -> AgentResponse:
